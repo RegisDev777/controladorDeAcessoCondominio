@@ -10,6 +10,15 @@ public class morador {
 		
 		//construtor
 		public morador(String nome, String rg, String cpf, char bloco) {
+			rg = rg.replaceAll("//d","");
+			 if(rg.length() != 9 ) {
+				 throw new IllegalArgumentException("RG INVALIDO...");
+			 }
+			 cpf = cpf.replaceAll("//d","");
+			 if(cpf.length() != 11 ) {
+				 throw new IllegalArgumentException("CPF INVALIDO...");
+			 }
+			
 			this.nome = nome;
 			this.rg = rg;
 			this.cpf = cpf;

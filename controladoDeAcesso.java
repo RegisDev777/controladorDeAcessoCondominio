@@ -17,10 +17,22 @@ public class controladoDeAcesso {
 		System.out.println("+-----------------------------------------+");
 		System.out.print("NOME:");
 		 String nome = scanner.nextLine();
+		 
+		 
 		System.out.print("RG:");
 		 String rg = scanner.nextLine();
+			rg = rg.replaceAll("//d","");
+			 if(rg.length() != 9 ) {
+				 throw new IllegalArgumentException("RG INVALIDO...");
+			 }
+		 
 		System.out.print("CPF:");
 		 String cpf = scanner.nextLine();
+		 	cpf = cpf.replaceAll("//d","");
+		 	 if(cpf.length() != 11 ) {
+		 		 throw new IllegalArgumentException("CPF INVALIDO...");
+		     }
+		 
 	    System.out.print("BLOCO:");
 		 char bloco = scanner.next().charAt(0);
 		   if(bloco != 'A' && bloco != 'B' && bloco != 'C' && bloco != 'D' && bloco != 'a' && bloco != 'b' && bloco != 'c' && bloco != 'd' ) {
@@ -53,7 +65,9 @@ public class controladoDeAcesso {
 	       for(morador morador : moradores) {
 	    	   if(morador.getNome().equals(nome)) {
 	    		   verifica = true;
-	    		    System.out.println("ACESSO PERMITIDO PARA ");
+	    		    System.out.println("ACESSO PERMITIDO PARA " + morador.getNome());
+	    		    System.out.println("DOCUMENTO:" + morador.getRg());
+	    		    System.out.println("APARTAMENTO:" + morador.getApartamento() + "      BLOCO:" + morador.getBloco());
 	    		    break;
 	    	   }
 	       }

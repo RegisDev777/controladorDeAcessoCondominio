@@ -6,11 +6,14 @@ public class visitante {
 	private String rg;
 	
 	
+	
+	//construtor
 	public visitante(String nome, String rg) {
 		this.nome = nome;
 	}
 
 
+	//metodos
 	public String getNome() {
 		return nome;
 	}
