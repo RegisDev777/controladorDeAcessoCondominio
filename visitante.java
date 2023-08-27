@@ -4,10 +4,13 @@ public class visitante {
 	private String nome;
 	private String cpf;
 	private String rg;
+	private String saida;
+    private String mesSaida;
 	
 	
 	
-	//construtor
+	
+	//construto
 	public visitante(String nome, String rg) {
 		this.nome = nome;
 	}
@@ -36,6 +39,32 @@ public class visitante {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
+
+
+	public String getSaida() {
+		return saida;
+	}
+	public void setSaida(String saida) {
+		this.saida = saida;
+	}
+
+
+	public String getMesSaida() {
+		return mesSaida;
+	}
+	public void setMesSaida(String mesSaida) {
+		this.mesSaida = mesSaida;
+	}
+
+
+	
+
+
+
+	
+	
+	
+	
 	
 	
 	

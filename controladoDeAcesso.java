@@ -42,16 +42,40 @@ public class controladoDeAcesso {
 		moradores.add(morador);
 		System.out.println("MORADOR CADASTRADO COM SUCESSO");
 	}
+	
 	public void cadastraVisitante(Scanner scanner) {
 		System.out.println("+-----------------------------------------+");
-		System.out.println("               REGISTAR MORADOR            ");
+		System.out.println("               REGISTAR VISITANTE          ");
 		System.out.println("+-----------------------------------------+");	
 		System.out.print("NOME:");
 		 String nome = scanner.nextLine();
+		 
 		System.out.print("RG:");
 		 String rg = scanner.nextLine();
-		visitante visitante = new visitante(nome, rg);
+		   rg = rg.replaceAll("//d","");
+		     if(rg.length() != 9 ) {
+			    throw new IllegalArgumentException("RG INVALIDO...");
+		   }
+		 
+		 System.out.print("DIA / MES DE SAIDA (obs nao esqueca do /):");
+	        String dataDeEntrada = scanner.nextLine();
+	          String[] partesData = dataDeEntrada.split("/");
+	            if (partesData.length != 2) {
+	        	        System.out.println("Formato de data inválido. Use DD/MM");
+	            }
+	          
+	     
+		visitante visitante = new visitante(nome, rg);		
 		visitantes.add(visitante);
+	
+		System.out.println("CADASTRO EFETUADO COM SUCESSO!");
+		System.out.println();
+
+		System.out.println("DESCONECTANDO DO SISTEMA EM:");
+		System.out.printf("%s / %s / 2023", partesData[0], partesData[1]);
+		System.out.println();	
+		System.out.println();
+		
 	}	
 	
 	//metodos VERIFICA ACESSO
