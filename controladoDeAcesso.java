@@ -1,15 +1,15 @@
 package ControladoDeAcessoCondominio;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 
 public class controladoDeAcesso {
 
 	private List<morador> moradores = new ArrayList<>();
 	private List<visitante> visitantes = new ArrayList<>();
-	
+ 
 	 //metodo  CADASTRA
 	public void cadastraMoradores(Scanner scanner) {
 		System.out.println("+-----------------------------------------+");
@@ -38,7 +38,11 @@ public class controladoDeAcesso {
 		   if(bloco != 'A' && bloco != 'B' && bloco != 'C' && bloco != 'D' && bloco != 'a' && bloco != 'b' && bloco != 'c' && bloco != 'd' ) {
 			      throw new IllegalArgumentException("BLOCO INVALIDO! tente novamente");
 	   }
-	    morador morador = new morador(nome, rg, cpf , bloco);
+	    
+		System.out.print("APARTAMENTO: ");
+		 int apartamento = scanner.nextInt();
+	
+	    morador morador = new morador(nome, rg, cpf , bloco,apartamento );
 		moradores.add(morador);
 		System.out.println("MORADOR CADASTRADO COM SUCESSO");
 	}
@@ -56,23 +60,27 @@ public class controladoDeAcesso {
 		     if(rg.length() != 9 ) {
 			    throw new IllegalArgumentException("RG INVALIDO...");
 		   }
-		 
-		 System.out.print("DIA / MES DE SAIDA (obs nao esqueca do /):");
-	        String dataDeEntrada = scanner.nextLine();
-	          String[] partesData = dataDeEntrada.split("/");
-	            if (partesData.length != 2) {
-	        	        System.out.println("Formato de data inválido. Use DD/MM");
-	            }
+		
+	   
+		     
+		 System.out.print("DIA DE SAIDA:");
+	        String Saida = scanner.nextLine();	        
+	     
+	     System.out.print("HORA:");
+	        String Hora = scanner.nextLine();
 	          
 	     
-		visitante visitante = new visitante(nome, rg);		
+		visitante visitante = new visitante(nome, rg, Saida, Hora);		
 		visitantes.add(visitante);
-	
+		
+
+	    
+		System.out.println();
 		System.out.println("CADASTRO EFETUADO COM SUCESSO!");
 		System.out.println();
 
-		System.out.println("DESCONECTANDO DO SISTEMA EM:");
-		System.out.printf("%s / %s / 2023", partesData[0], partesData[1]);
+		System.out.println("DESCONECTANDO DO SISTEMA:");
+		System.out.printf("data:" + Saida + "/2023" + " As " + Hora);
 		System.out.println();	
 		System.out.println();
 		
@@ -83,13 +91,14 @@ public class controladoDeAcesso {
 		System.out.println("+-----------------------------------------+");
 	    System.out.println("|            VERICADOR ACESSO             |");
 	    System.out.println("+-----------------------------------------+");
-	    System.out.println("NOME:");
+	    System.out.print("NOME:");
 	      String nome = scanner.nextLine();
 	       boolean verifica = false;
 	       for(morador morador : moradores) {
 	    	   if(morador.getNome().equals(nome)) {
 	    		   verifica = true;
-	    		    System.out.println("ACESSO PERMITIDO PARA " + morador.getNome());
+	    		    System.out.println("ACESSO PERMITIDO PARA MORADOR");
+	    		    System.out.println(morador.getNome());
 	    		    System.out.println("DOCUMENTO:" + morador.getRg());
 	    		    System.out.println("APARTAMENTO:" + morador.getApartamento() + "      BLOCO:" + morador.getBloco());
 	    		    break;
@@ -99,7 +108,11 @@ public class controladoDeAcesso {
 	       if(!verifica) {
 	    	   for(visitante visitante : visitantes) {
 	    		 if(visitante.getNome().equals(nome)) {   
-	    			System.out.println("ACESSO PERMITDO!!"); 
+	    			System.out.println("ACESSO PERMITDO PARA VISITANTE");
+	    			System.out.println(visitante.getNome());
+	    			System.out.println("Desconectando Do Sistema em: ");
+	    			System.out.println("Data De Saida:" + visitante.getDataSaida() + "/2023");
+	    			System.out.println("Hora Prevista " + visitante.getHoraSaida());
 	    			verifica = true;
 	    			break;
 	    		 }

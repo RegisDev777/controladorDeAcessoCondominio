@@ -1,22 +1,30 @@
 package ControladoDeAcessoCondominio;
 
+
+
 public class visitante {
 	private String nome;
 	private String cpf;
 	private String rg;
-	private String saida;
-    private String mesSaida;
-	
+	private String dataSaida;
+	private String HoraSaida;
 	
 	
 	
 	//construto
-	public visitante(String nome, String rg) {
+	public visitante(String nome, String rg, String dataSaida, String HoraSaida) {
 		this.nome = nome;
+		this.rg = rg;
+		this.dataSaida = dataSaida;
+		this.HoraSaida = HoraSaida;
 	}
 
-
 	//metodos
+
+	
+	
+	
+	//getters e setters
 	public String getNome() {
 		return nome;
 	}
@@ -39,25 +47,29 @@ public class visitante {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-
-
-	public String getSaida() {
-		return saida;
-	}
-	public void setSaida(String saida) {
-		this.saida = saida;
-	}
-
-
-	public String getMesSaida() {
-		return mesSaida;
-	}
-	public void setMesSaida(String mesSaida) {
-		this.mesSaida = mesSaida;
-	}
-
-
 	
+	
+
+	public String getDataSaida() {
+		return dataSaida;
+	}
+
+	public void setDataSaida(String dataSaida) {
+		this.dataSaida = dataSaida;
+	}
+	
+	
+
+	public String getHoraSaida() {
+		return HoraSaida;
+	}
+
+	public void setHoraSaida(String horaSaida) {
+		HoraSaida = horaSaida;
+	}
+
+
+
 
 
 

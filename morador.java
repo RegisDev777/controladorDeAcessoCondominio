@@ -9,7 +9,7 @@ public class morador {
 		private char bloco;
 		
 		//construtor
-		public morador(String nome, String rg, String cpf, char bloco) {
+		public morador(String nome, String rg, String cpf, char bloco, int apartamento) {
 			rg = rg.replaceAll("//d","");
 			 if(rg.length() != 9 ) {
 				 throw new IllegalArgumentException("RG INVALIDO...");
